@@ -42,7 +42,30 @@ website root
 ```
 These files are for you to change. They contain the minimum of properties and presentation and are part of your project after installing the Nuget package (they are not overwritten during upgrades)
 
-You will typically want to change the VevContentPageController.cs to use a View and render your own ´<head>´ tag with your own tracking.
+You will typically want to change the VevContentPageController.cs to use a View and render your own `<head>` tag with your own tracking.
+
+### Startup.cs
+Add the following to `ConfigureServices` in your `Startup.cs` file:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddVev(_configuration);
+    ...
+}
+```
+
+Note! Depending on how you structure your startup, you might need to inject the `IConfiguration` in the constructur, like this:
+```csharp
+    private readonly IConfiguration _configuration;
+
+    public Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration configuration)
+    {
+        _webHostingEnvironment = webHostingEnvironment;
+        _configuration = configuration;
+    }
+
+```
 
 # Configuration
 The configuration is done as Optimizely Hosting destinations in Vev with corresponding application settings in Optimizely CMS. You can publish as both pages and blocks, and need to create one hosting destionation for each so the Vev designer can choose how to publish the content.
