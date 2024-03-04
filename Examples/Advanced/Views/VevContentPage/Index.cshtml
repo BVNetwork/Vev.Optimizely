@@ -1,0 +1,18 @@
+@using EPiServer.Web
+@model YourProject.Models.ViewModels.PageViewModel<YourProject.Models.Pages.VevContentPage>
+@inject IContextModeResolver ContextModeResolver
+@{
+    Layout = "~/Views/Shared/Layouts/Root.cshtml";
+}
+
+@if (ContextModeResolver.CurrentMode == ContextMode.Edit ||
+     ContextModeResolver.CurrentMode == ContextMode.Preview)
+{
+    <div class="vev-edit-override" style="">
+        @Html.Raw(@Model.CurrentPage.ImportedHtml)
+    </div>
+}
+else
+{
+    @Html.Raw(@Model.CurrentPage.ImportedHtml)
+}
