@@ -1,9 +1,12 @@
 # Vev + Optimizely integration
-Create engaging and beatiful designs in [Vev](https://vev.design) and publish easily to your Optimizely CMS or Customized Commerce sites.
+Create engaging and beatiful designs in [Vev](https://vev.design/optimizely) and publish easily to your Optimizely CMS or Customized Commerce sites.
 
-All content is pushed to your Optimizely CMS site and hosted there. This means all the content is delivered from your own domain and helps better your SEO ranking and no need to change your content security polices.
+All content is pushed to your Optimizely CMS site and hosted there. This means all the content is delivered from your own domain and helps increase your SEO ranking, there is no need to change your content security polices and you can combine code, logic, tracking and design from Optimizely CMS / Commerce and Vev.
 
-[*Video showing the publishing process in action*]
+## Requirements
+1. You need to have a Vev account with the "Optimizely Sync" destination type enabled. This require a paid Vev subscription. [Contact Vev](https://vev.design/optimizely) to learn more.
+2. Optimizely CMS 12 to install the integration. CMS 11 support is being evaluated, add [your vote here](issues/1).
+
 
 ## Features
 ### Publish a Vev page as a page in Optimizely CMS
