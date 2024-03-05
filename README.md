@@ -23,26 +23,24 @@ Create translated versions of your design in the same Vev project to publish as 
 ## Installation
 The installation is done through a Nuget Package and custom page and block types to control rendering.
 ### Nuget 
-Install the Nuget Package into your project:
-```
-install-package Vev.Optimizely.CMS
-```
-### Project Files
-When you install the Nuget package, a few files are copied into your project:
-```
-website root
-  \Vev
-    \Components
-      VevGenericBlockViewComponent.cs
-    \Controllers
-      VevContentPageController.cs
-    \Models
-      VevContentPage.cs
-      VevGenericBlock.cs
-```
-These files are for you to change. They contain the minimum of properties and presentation and are part of your project after installing the Nuget package (they are not overwritten during upgrades)
+Install the Nuget Package into your project. 
 
-You will typically want to change the VevContentPageController.cs to use a View and render your own `<head>` tag with your own tracking.
+#### Package Manager Console
+```
+install-package Vev.Optimizely.CMS-beta1
+```
+#### Command Line
+```
+dotnet add Vev.Optimizely.CMS-beta1
+```
+**Note!** You need to have the [Optimizely Nuget](https://nuget.optimizely.com) feed added to your Nuget sources. Since you have installed Optimizely CMS, that should already have been taken care off.
+
+### Project Files
+There are two example file-sets available for you to copy into your Optimizely CMS project. You can find these in the `Examples` folder here on Github. 
+
+Read more about the examples [in the documentation](/Examples/readme.md).
+
+These files are for you to change. They contain properties and presentation and are part of your project (they are not overwritten during upgrades)
 
 ### Startup.cs
 Add the following to `ConfigureServices` in your `Startup.cs` file:
