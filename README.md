@@ -28,13 +28,9 @@ The installation is done through a Nuget Package and custom page and block types
 ### Nuget 
 Install the Nuget Package into your project. 
 
-#### Package Manager Console
-```
-install-package Vev.Optimizely.CMS-beta1
-```
 #### Command Line
 ```
-dotnet add Vev.Optimizely.CMS-beta1
+dotnet add package Vev.Optimizely.CMS -v 1.0.0-beta1
 ```
 **Note!** You need to have the [Optimizely Nuget](https://nuget.optimizely.com) feed added to your Nuget sources. Since you have installed Optimizely CMS, that should already have been taken care off.
 
