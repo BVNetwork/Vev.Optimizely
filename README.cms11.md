@@ -1,11 +1,12 @@
-# Vev + Optimizely integration
+# Vev + Optimizely integration CMS 11
 Create engaging and beatiful designs in [Vev](https://www.vev.design/optimizely/) and publish easily to your Optimizely CMS or Customized Commerce sites.
 
 All content is pushed to your Optimizely CMS site and hosted there. This means all the content is delivered from your own domain and helps increase your SEO ranking, there is no need to change your content security polices and you can combine code, logic, tracking and design from Optimizely CMS / Commerce and Vev.
 
 ## Requirements
 1. You need to have a Vev account with the "Optimizely Sync" destination type enabled. This require a paid Vev subscription. [Contact Vev](https://www.vev.design/optimizely/) to learn more.
-2. Optimizely CMS 12 to install the integration. CMS 11 is supported [read more here](README.cms11.md).
+2. Optimizely CMS 11 to install the integration.
+
 
 ## Features
 ### Publish a Vev page as a page in Optimizely CMS
@@ -18,7 +19,7 @@ You are not limited to creating full pages, use the creative freedom in Vev
 Create translated versions of your design in the same Vev project to publish as multi language versions of the same page in Optimizely CMS.
 
 ## Requirements
- * Optimzely CMS version 12.2 or newer (standalone or part of Customized Commerce)
+ * Optimzely CMS version 11.21.2 or newer (standalone or part of Customized Commerce)
  * A Vev Enterprise account with Optimizely hosting feature
  * One or more hosting destinations in Vev and configuration settings that correspond.
 
@@ -29,7 +30,7 @@ Install the Nuget Package into your project.
 
 #### Command Line
 ```
-dotnet add package Vev.Optimizely.CMS -v 1.0.0-beta1
+Install-Package Vev.Optimizely.CMS -Version 1.0.0-beta1
 ```
 **Note!** You need to have the [Optimizely Nuget](https://nuget.optimizely.com) feed added to your Nuget sources. Since you have installed Optimizely CMS, that should already have been taken care off.
 
@@ -39,29 +40,6 @@ There are two example file-sets available for you to copy into your Optimizely C
 Read more about the examples [in the documentation](/Examples/readme.md).
 
 These files are for you to change. They contain properties and presentation and are part of your project (they are not overwritten during upgrades)
-
-### Startup.cs
-Add the following to `ConfigureServices` in your `Startup.cs` file:
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    services.AddVev(_configuration);
-    ...
-}
-```
-
-Note! Depending on how you structure your startup, you might need to inject the `IConfiguration` in the constructur, like this:
-```csharp
-    private readonly IConfiguration _configuration;
-
-    public Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration configuration)
-    {
-        _webHostingEnvironment = webHostingEnvironment;
-        _configuration = configuration;
-    }
-
-```
 
 # Configuration
 The configuration is done as Optimizely Hosting destinations in Vev with corresponding application settings in Optimizely CMS. You can publish as both pages and blocks, and need to create one hosting destionation for each so the Vev designer can choose how to publish the content.
@@ -103,10 +81,9 @@ The hosting destination tells Vev how to talk to your specific site(s).
  1. The "Optimizely Domain" should be prefilled with the domain value from the previous page (if not, just enter the same value here)
  1. Under Security, click the Generate button to generate a value used to sign the content sent from Vev to Optimizely CMS. **Important!** Copy the value as you will need this later, it cannot be retrieved after you close the dialog.\  
 ![create-custom-domain-secret.png](img%2Fcreate-custom-domain-secret.png)
- 1. Add the following to your appSettings.json in your project\  
+ 1. Add a json file vevsettings.json to your project\  
 ```json
 {
-  "Vev": {
     "Enabled": true,
     "Hosting": [
       {
@@ -119,7 +96,7 @@ The hosting destination tells Vev how to talk to your specific site(s).
         "SaveAsDraft": false
       }
     ]
-  }
+}
 ```  
  12. Repeat these steps to create a new hosting destination for Blocks as well, use `"PublishingType": 2` for blocks.
  1. When your site has been deployed with the new settings, you can click the Test Connection, and it will check if the integration works. If you get an error, please check the `SignatureToken` value in your configuration.
@@ -127,7 +104,7 @@ The hosting destination tells Vev how to talk to your specific site(s).
 
 ### Example Configuration
 ```json
-"Vev": {
+{
     "Enabled": true,
     "Hosting": [
       {
@@ -149,7 +126,7 @@ The hosting destination tells Vev how to talk to your specific site(s).
         "SaveAsDraft": true
       }
     ]
-  }
+}
 ```
 ## Testing locally
 During development, it is useful to be able to test the integration in your local environment. This is easy to do with a free [Ngrok](https://ngrok.com) account.
