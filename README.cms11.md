@@ -30,7 +30,7 @@ Install the Nuget Package into your project.
 
 #### Command Line
 ```
-Install-Package Vev.Optimizely.CMS -Version 1.0.0-beta1
+Install-Package Vev.Optimizely.CMS11 -Version 1.0.0-beta1
 ```
 **Note!** You need to have the [Optimizely Nuget](https://nuget.optimizely.com) feed added to your Nuget sources. Since you have installed Optimizely CMS, that should already have been taken care off.
 
